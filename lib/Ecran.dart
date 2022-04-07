@@ -235,8 +235,8 @@ class MessageSection extends StatelessWidget {
                 child: Row(
                     children: [
                       Container(
-                        width: 62,
-                        height: 62,
+                        width: 100,
+                        height: 100,
                         decoration: BoxDecoration(
                           color:const Color.fromRGBO(37, 183, 154, 1),
                           shape: BoxShape.circle,
