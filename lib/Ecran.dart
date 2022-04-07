@@ -165,56 +165,56 @@ class MessageSection extends StatelessWidget {
 
   final List messages=[
     {
-      'senderprofile':'images/a1.jpg',
+      'senderprofile':'images/a2.jpg',
       'sendername':'Lara',
       'message':'comment vas tu mon bro?',
-      'unRead': 0,
+      'unRead': 1,
       'date':'16.00',
     },
 
     {
       'senderprofile':'images/a1.jpg',
-      'sendername':'Lara',
+      'sendername':'Franck',
       'message':'comment vas tu?',
       'unRead': 0,
       'date':'16.00',
     },
 
     {
-      'senderprofile':'images/a1.jpg',
-      'sendername':'Lara',
+      'senderprofile':'images/a5.jpg',
+      'sendername':'Alain',
       'message':'et la soirée?',
-      'unRead': 0,
+      'unRead': 2,
       'date':'16.00',
     },
 
     {
-      'senderprofile':'images/a1.jpg',
-      'sendername':'Lara',
+      'senderprofile':'images/a3.jpg',
+      'sendername':'Jean',
       'message':'Bonjour',
       'unRead': 0,
       'date':'17.00',
     },
 
     {
-      'senderprofile':'images/a1.jpg',
-      'sendername':'Lara',
+      'senderprofile':'images/a4.jpg',
+      'sendername':'Fred',
       'message':'Hello. ce soir je peux te récupérer?',
-      'unRead': 0,
+      'unRead': 3,
       'date':'15.00',
     },
 
     {
-      'senderprofile':'images/a1.jpg',
-      'sendername':'Lara',
+      'senderprofile':'images/a5.jpg',
+      'sendername':'Raul',
       'message':'comment vas tu?',
-      'unRead': 0,
+      'unRead': 1,
       'date':'18.00',
     },
 
     {
       'senderprofile':'images/a1.jpg',
-      'sendername':'Lara',
+      'sendername':'Steeve',
       'message':'comment vas tu?',
       'unRead': 0,
       'date':'17.00',
@@ -230,13 +230,15 @@ class MessageSection extends StatelessWidget {
         children: messages.map((message){
           return InkWell(
             onTap: (){},
+              splashColor: const Color.fromRGBO(37, 183, 154, 1),
             child: Container(
               padding: const EdgeInsets.only(left: 30, right: 10, top: 15),
                 child: Row(
                     children: [
                       Container(
-                        width: 100,
-                        height: 100,
+                        width: 62,
+                        height: 62,
+                        margin:const EdgeInsets.only(right:23),
                         decoration: BoxDecoration(
                           color:const Color.fromRGBO(37, 183, 154, 1),
                           shape: BoxShape.circle,
@@ -244,6 +246,72 @@ class MessageSection extends StatelessWidget {
                             fit: BoxFit.cover,
                             image: AssetImage(message['senderprofile'])
                           )
+                        ),
+                      ),
+                      Expanded(
+                        child:Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      message['sendername'],
+                                      style: GoogleFonts.inter(
+                                        color: Colors.grey,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Wrap(
+                                      children: [
+                                        Text(message['message'],
+                                          style: GoogleFonts.inter(
+                                            color: Colors.black,
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w500,
+                                          ),)
+                                      ],
+                                    )
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    Text(message['date']),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    message['unRead']!= 0
+                                    ? Container(
+                                      padding:const EdgeInsets.all(7) ,
+                                        decoration: const BoxDecoration(
+                                          color: Color.fromRGBO(37, 183, 154, 1),
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: Text(message['unRead'].toString(),
+                                        style: GoogleFonts.inter(
+                                          color: Colors.black,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w500,
+                                        )
+                                        )
+                                    )
+                                    :Container(),
+                                  ],
+                                )
+                              ],
+                            ),
+                            const SizedBox(height: 20),
+                            Container(
+                              color:Colors.grey[400],
+                              height: 1,
+                            )
+                          ],
                         ),
                       )
                     ],
@@ -295,12 +363,17 @@ class Ecran extends StatelessWidget {
         ],
       ),
 
-      body: Column(
-        children: [
-          MenuSection(),
-          FavoriteSection(),
-          MessageSection(),
-        ],
+      body: ListView(
+        children:[
+          Column(
+          children: [
+            MenuSection(),
+            FavoriteSection(),
+            MessageSection(),
+
+          ],
+        ),
+    ]
       ),
 
     );
