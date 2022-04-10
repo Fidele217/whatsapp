@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-
-import 'Ecran.dart';
+import 'Discussion.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
     title: 'My App',
     debugShowCheckedModeBanner:false,
-    home:Ecran(),
+    home:discussion(),
     );
 
   }

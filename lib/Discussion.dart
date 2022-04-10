@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'Single.dart';
 
 class MenuSection extends StatelessWidget {
 
@@ -34,6 +35,7 @@ class MenuSection extends StatelessWidget {
     );
   }
 }
+
 class FavoriteSection extends StatelessWidget {
 
   final List FavoriteContact = [
@@ -229,7 +231,13 @@ class MessageSection extends StatelessWidget {
       child: Column(
         children: messages.map((message){
           return InkWell(
-            onTap: (){},
+            onTap: (){
+              Navigator.push(
+                  context, MaterialPageRoute(
+                  builder: (context)=>Single()
+                  )
+              );
+            },
               splashColor: const Color.fromRGBO(37, 183, 154, 1),
             child: Container(
               padding: const EdgeInsets.only(left: 30, right: 10, top: 15),
@@ -325,8 +333,7 @@ class MessageSection extends StatelessWidget {
 }
 
 
-
-class Ecran extends StatelessWidget {
+class discussion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
